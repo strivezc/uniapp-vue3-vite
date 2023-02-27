@@ -10,6 +10,7 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'plugin:prettier/recommended',
     'prettier', // eslint-config-prettier 的缩写
+    './.eslintrc-auto-import.json',
   ],
   parser: 'vue-eslint-parser', // 指定要使用的解析器
   overrides: [],

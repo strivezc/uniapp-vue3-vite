@@ -1,13 +1,13 @@
-import { defineConfig,loadEnv } from 'vite'
-import uni from '@dcloudio/vite-plugin-uni'
+import { defineConfig, loadEnv } from 'vite';
+import uni from '@dcloudio/vite-plugin-uni';
 import AutoImport from 'unplugin-auto-import/vite';
 
-const path = require('path')
+const path = require('path');
 
 // https://vitejs.dev/config/
 export default ({ command, mode }) => {
-  const env= loadEnv(mode, process.cwd());
-  return  defineConfig({
+  const env = loadEnv(mode, process.cwd());
+  return defineConfig({
     plugins: [
       uni(),
       AutoImport({
@@ -24,6 +24,7 @@ export default ({ command, mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
+        '@img': path.resolve(__dirname, 'src/static/images'),
       },
     },
     css: {
@@ -47,5 +48,5 @@ export default ({ command, mode }) => {
       },
       chunkSizeWarningLimit: 1500, // chunk 大小警告的限制（以 kbs 为单位）
     },
-  })
-}
+  });
+};

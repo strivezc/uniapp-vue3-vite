@@ -2,17 +2,29 @@
   "easycom": {
     "autoscan": true,
     "custom": {
-      // uni-ui 规则如下配置
       "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
     }
   },
   "pages": [
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
-      "path": "pages/index/index",
+      "path": "pages/home/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationStyle": "custom",
+        "backgroundColorTop": "#FFFFFF",
+        "backgroundColorBottom": "#FFFFFF"
       }
+    },
+    {
+      "path": "pages/personal/index",
+      "style": {
+        "navigationBarTitleText": "personal",
+        "navigationStyle": "custom",
+        "backgroundColorTop": "#0087ff",
+        "backgroundColorBottom": "#FFFFFF"
+      }
+    },
+    {
+      "path": "components/webview/index"
     }
   ],
   "globalStyle": {
@@ -23,5 +35,169 @@
     "usingComponents": {
       "painter": "/wxcomponents/painter/painter"
     }
-  }
+  },
+  "tabBar": {
+    "color": "#CED1D5",
+    "selectedColor": "#0084FF",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/tabbar/home_gray.png",
+        "selectedIconPath": "static/tabbar/home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/personal/index",
+        "iconPath": "static/tabbar/person_gray.png",
+        "selectedIconPath": "static/tabbar/person.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "subPackagesA",
+      "pages": [
+        {
+          "path": "home/selfTextbook",
+          "style": {
+            "navigationBarTitleText": "自研教材"
+          }
+        },
+        {
+          "path": "home/fixedTeacher",
+          "style": {
+            "navigationBarTitleText": "VIP上课"
+          }
+        },
+        {
+          "path": "home/globalTeacher",
+          "style": {
+            "navigationBarTitleText": "全球师资"
+          }
+        },
+        {
+          "path": "personal/setting",
+          "style": {
+            "disableScroll": true
+          }
+        },
+        {
+          "path": "personal/privacyPolicy",
+          "style": {
+            "navigationBarTitleText": "隐私政策"
+          }
+        },
+        {
+          "path": "personal/userAgreement",
+          "style": {
+            "navigationBarTitleText": "用户协议"
+          }
+        },
+        {
+          "path": "personal/accountLogoff",
+          "style": {
+            "navigationBarTitleText": "账号注销",
+            "disableScroll": true
+          }
+        },
+        {
+          "path": "personal/authentication",
+          "style": {
+            "navigationBarTitleText": "身份验证",
+            "disableScroll": true
+          }
+        },
+        {
+          "path": "personal/logoffResult",
+          "style": {
+            "navigationBarTitleText": "身份验证",
+            "disableScroll": true
+          }
+        },
+        {
+          "path": "personal/chooseLoginType",
+          "style": {
+            "navigationBarTitleText": "登录说客英语",
+            "disableScroll": true
+          }
+        },
+        {
+          "path": "personal/phoneLogin",
+          "style": {
+            "navigationBarTitleText": "手机登录",
+            "disableScroll": true
+          }
+        },
+        {
+          "path": "personal/invitationGift",
+          "style": {
+            "navigationBarTitleText": "邀请有礼",
+            "backgroundColorTop": "#FFFFFF",
+            "backgroundColorBottom": "#FFFFFF"
+          }
+        },
+        {
+          "path": "personal/invitationRecord",
+          "style": {
+            "navigationBarTitleText": "邀请记录"
+          }
+        }
+      ]
+    },
+    {
+      "root": "subPackagesB",
+      "pages": [
+        {
+          "path": "voteActivity/activityDetail",
+          "style": {
+            "navigationBarTitleText": "投票活动"
+          }
+        },
+        {
+          "path": "voteActivity/activityEnter",
+          "style": {
+            "navigationBarTitleText": "报名参赛"
+          }
+        },
+        {
+          "path": "voteActivity/enterResult",
+          "style": {
+            "navigationBarTitleText": "报名结果"
+          }
+        },
+        {
+          "path": "voteActivity/userVoteResult",
+          "style": {
+            "navigationBarTitleText": "投票"
+          }
+        },
+        {
+          "path": "voteActivity/activityRank",
+          "style": {
+            "navigationBarTitleText": "投票排名"
+          }
+        },
+        {
+          "path": "voteActivity/individualDetail",
+          "style": {
+            "navigationBarTitleText": "参赛个人详情"
+          }
+        }, {
+          "path": "voteActivity/voteRecord",
+          "style": {
+            "navigationBarTitleText": "投票记录页"
+          }
+        }, {
+          "path": "voteActivity/webview"
+        },{
+          "path": "jigsawActivity/puzzleGame",
+          "style": {
+            "navigationBarTitleText": "参赛个人详情"
+          }
+        }
+      ]
+    }
+  ]
 }

@@ -1,16 +1,17 @@
-import { defineStore } from "pinia";
-import UserService from "@/api/UserService";
-import { getToken, removeToken, clearStorageSync } from "@/utils/auth";
+import { defineStore } from 'pinia';
+import UserService from '@/api/UserService';
+import { getToken, setToken, removeToken, clearStorageSync } from '@/utils/auth';
 
-export const useUserStore = defineStore("user", {
+export const useUserStore = defineStore('user', {
   state: () => {
     return {
       token: getToken(),
-      name: "",
-      userImg: "",
-      phone: "",
-      userId: "",
-      recommendCode: "",
+      userName: '',
+      userType: '',
+      userImg: '',
+      phone: '',
+      userId: '',
+      recommendCode: '',
     };
   },
   persist: {
@@ -19,21 +20,20 @@ export const useUserStore = defineStore("user", {
   },
   getters: {
     getToken: (state) => state.token,
-    getName: (state) => state.name,
-    getUserImg: (state) => state.userImg,
-    getPhone: (state) => state.phone,
-    getUserId: (state) => state.userId,
-    getRecommendCode: (state) => state.recommendCode,
   },
   actions: {
     setRecommendCode(recommendCode) {
       this.recommendCode = recommendCode;
     },
     setToken(token) {
+      setToken(token);
       this.token = token;
     },
-    setName(name) {
-      this.name = name;
+    setUserName(userName) {
+      this.userName = userName;
+    },
+    setUserType(userType) {
+      this.userType = userType;
     },
     setUserImg(userImg) {
       this.userImg = userImg;
@@ -41,7 +41,7 @@ export const useUserStore = defineStore("user", {
     setUserId(userId) {
       this.userId = userId;
     },
-    setPhone(phone) {
+    setUserPhone(phone) {
       this.phone = phone;
     },
     // user logout
@@ -49,9 +49,10 @@ export const useUserStore = defineStore("user", {
       return new Promise((resolve, reject) => {
         UserService.logout(this.token)
           .then(() => {
-            this.setToken("");
+            this.setToken('');
             removeToken();
             clearStorageSync();
+            this.$reset();
             resolve();
           })
           .catch((error) => {
@@ -62,7 +63,7 @@ export const useUserStore = defineStore("user", {
     // remove token
     resetToken() {
       return new Promise((resolve) => {
-        this.setToken("");
+        this.setToken('');
         clearStorageSync();
         resolve();
       });

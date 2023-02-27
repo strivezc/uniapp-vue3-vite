@@ -1,4 +1,4 @@
-import { parseTime } from "./index";
+import { parseTime } from './index';
 export function uniStorage() {
   //存储：
   const originSetStorageSync = uni.setStorageSync;
@@ -20,11 +20,11 @@ export function uniStorage() {
       //得到增加秒后的结果（到期时间）：
       let newDate = date.getTime();
       //格式化时间：
-      let dateStr = parseTime(newDate, "{y}/{m}/{d} {h}:{i}:{s}");
+      let dateStr = parseTime(newDate, '{y}/{m}/{d} {h}:{i}:{s}');
       //存储：
       originSetStorageSync(key, { data, expires: dateStr });
     } else {
-      throw "参数错误，有效时间请使用正整数类型！";
+      throw '参数错误，有效时间请使用正整数类型！';
     }
   };
   //提取：
@@ -33,10 +33,7 @@ export function uniStorage() {
     //根据key获取存储的数据：
     const data = originGetStorageSync(key);
     //判断是否设置有效期：
-    if (
-      typeof data !== "object" ||
-      (typeof data === "object" && !data.expires)
-    ) {
+    if (typeof data !== 'object' || (typeof data === 'object' && !data.expires)) {
       //未设置有效期：
       return data;
     }
@@ -50,7 +47,7 @@ export function uniStorage() {
     } else {
       //已过期
       uni.removeStorageSync(key);
-      return "";
+      return '';
     }
   };
 }

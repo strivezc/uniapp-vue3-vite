@@ -3,13 +3,13 @@
 </template>
 
 <script>
-export default {
-  name: "header",
-  props: {},
-  data() {
-    return {};
-  },
-};
+  export default {
+    name: 'header',
+    props: {},
+    data() {
+      return {};
+    },
+  };
 </script>
 
 <style scoped></style>

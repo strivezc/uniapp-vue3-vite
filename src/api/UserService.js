@@ -1,18 +1,18 @@
-import request from "@/utils/request";
-import { requestPort } from "@/utils/requestPort";
+import request from '@/utils/request';
+import { requestPort } from '@/utils/requestPort';
 
 export default {
   login(data) {
     return request({
       url: `${requestPort.users}/user/login`,
-      method: "post",
+      method: 'post',
       data,
     });
   },
   appletLogin(data) {
     return request({
       url: `${requestPort.users}/user/appletLogin`,
-      method: "post",
+      method: 'post',
       data,
     });
   },
@@ -20,72 +20,72 @@ export default {
   getInfo(userId) {
     return request({
       url: `${requestPort.users}/user/getUserMessageForFront/${userId}`,
-      method: "get",
+      method: 'get',
     });
   },
 
   logout() {
     return request({
       url: `${requestPort.users}/user/logout/3`,
-      method: "post",
+      method: 'post',
     });
   },
 
   getComplianceContent(data) {
     return request({
       url: `${requestPort.users}/user/queryComplianceContent`,
-      method: "post",
+      method: 'post',
       data,
     });
   },
   checkLoginOffNum() {
     return request({
       url: `${requestPort.users}/user/checkLoginOffNum`,
-      method: "get",
+      method: 'get',
     });
   },
   checkUserPassword(password) {
     return request({
       url: `${requestPort.users}/user/checkUserPassword/${password}`,
-      method: "get",
+      method: 'get',
     });
   },
   logoff(data) {
     return request({
       url: `${requestPort.users}/user/logoff`,
-      method: "post",
+      method: 'post',
       data,
     });
   },
   getPictureCode() {
     return request({
       url: `${requestPort.users}/user/getPictureCode`,
-      method: "post",
+      method: 'post',
     });
   },
   sendSmsCodeByCaptcha(data) {
     return request({
       url: `${requestPort.users}/user/sendSmsCodeByCaptcha`,
-      method: "post",
+      method: 'post',
       data,
     });
   },
   activityShareImageUrl() {
     return request({
       url: `${requestPort.users}/user/activityShareImageUrl`,
-      method: "get",
+      method: 'get',
     });
   },
   queryActivityAppRules() {
     return request({
       url: `${requestPort.users}/user/queryActivityAppRules`,
-      method: "get",
+      method: 'get',
     });
   },
   userInviteRecord(data) {
     return request({
       url: `${requestPort.users}/personCenter/userInviteRecord`,
-      method: "post",
+      method: 'post',
       data,
     });
   },

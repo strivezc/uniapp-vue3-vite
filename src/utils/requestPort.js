@@ -9,10 +9,10 @@
  */
 
 export const requestPort = {
-  datebook: "/datebook",
-  market: "/market",
-  record: "/record",
-  users: "/users",
-  async: "/async",
-  config: "/config",
+  datebook: '/datebook',
+  market: '/market',
+  record: '/record',
+  users: '/users',
+  async: '/async',
+  config: '/config',
 };
