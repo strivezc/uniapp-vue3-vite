@@ -1,0 +1,91 @@
+.btn-submit{
+  width: 712rpx;
+  height: 88rpx;
+  border-radius: 44rpx 44rpx 44rpx 44rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 88rpx;
+  background: #0087FF!important;
+  &::after{
+    border:none;
+  }
+}
+.btn-login{
+  width: 670rpx;
+  height: 96rpx;
+  border-radius: 48rpx 48rpx 48rpx 48rpx;
+  border: none;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 96rpx;
+  background: #0087FF!important;
+  &::after{
+    border:none;
+  }
+}
+
+/*圆形check样式*/
+checkbox.myRadioCheck .wx-checkbox-input,
+checkbox.myRadioCheck .uni-checkbox-input {
+  width: 32rpx ;
+  height: 32rpx ;
+  border-radius: 50% ;
+  border: 1px solid #D8D8D8;
+}
+checkbox.myRadioCheck .uni-checkbox-input-checked::before,
+checkbox.myRadioCheck .wx-checkbox-input-checked::before{
+  font-size: 32rpx;
+}
+checkbox.myRadioCheck .uni-checkbox-input-checked,
+checkbox.myRadioCheck .wx-checkbox-input-checked{
+  background-color: #0087FF;
+  border: 1px solid transparent;
+}
+
+.normal-input{
+  height: 96rpx;
+  padding: 0 20rpx;
+  background: #FFFFFF;
+  border-bottom: 1rpx solid #D8D8D8;
+}
+
+.input-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #D8D8D8;
+  padding: 0 20rpx;
+  .input{
+    height: 96rpx;
+    background: #FFFFFF;
+  }
+  .code-img{
+    width: 118rpx;
+    height: 64rpx;
+  }
+  .code{
+    height: 36rpx;
+    font-size: 28rpx;
+    font-weight: 400;
+    color: #0087FF;
+    line-height: 36rpx;
+    width: 200rpx;
+    text-align: right;
+  }
+}
+.tl-show{
+  overflow: hidden;
+  position:fixed;
+  height: 100%;
+  width: 100%;
+}
+::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  background: transparent;
+  color: transparent;
+}
