@@ -1,17 +1,17 @@
 uni-app+vue3.2 + vite4.0 + uni-ui + pinia 微信小程序项目
 
-- [前言](# 前言)
-- [Vite 创建项目](# Vite-创建项目)
-- [代码规范 (格式化、提示)](# 代码规范 (格式化、提示))
-  - [eslint](# eslint)
-  - [prettier](# prettier)
-  - [保存文件自动格式化](# 保存文件自动格式化)
-- [环境变量](# 环境变量)
-- [CSS 预处理器](# css-预处理器)
-- [uni-ui](# uni-ui)
-- [自动导入API](# 自动导入API)
-- [Pinia 🍍](# Pinia)
-- [请求封装](# 请求封装)
+- [前言](#前言)
+- [Vite 创建项目](#Vite创建项目)
+- [代码规范 (格式化、提示)](#代码规范)
+  - [eslint](#eslint)
+  - [prettier](#prettier)
+  - [保存文件自动格式化](#保存文件自动格式化)
+- [环境变量](#环境变量)
+- [CSS 预处理器](#Css预处理器)
+- [uni-ui](#uni-ui)
+- [自动导入API](#自动导入API)
+- [Pinia 🍍](#Pinia)
+- [请求封装](#请求封装)
 
 
 # 前言
@@ -20,7 +20,7 @@ uni-app+vue3.2 + vite4.0 + uni-ui + pinia 微信小程序项目
 + 项目示例已上传 github，有需要的可以参考 [uniapp-vue3-vite](https://github.com/strivezc/uniapp-vue3-vite)
 
 
-# Vite-创建项目
+# Vite创建项目
 + 由于typescript还不熟练，所以不用在公司项目上了(o(*￣︶￣*)o)
 
 ```sh
@@ -28,7 +28,7 @@ npx degit dcloudio/uni-preset-vue#vite uniapp-vue3-vite
 ```
 
 
-#代码规范 (格式化、提示)
+#代码规范
 
 ## eslint
 
@@ -103,14 +103,14 @@ module.exports = {
 ## 保存文件自动格式化
 1、如果用vscode在.vscode设置
 ```json
-# .vscode/settings.json
+//.vscode/settings.json
 
 {
-  # 保存时eslint自动修复错误
+  // 保存时eslint自动修复错误
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  # 保存自动格式化
+  // 保存自动格式化
   "editor.formatOnSave": true
 }
 ```
@@ -141,7 +141,7 @@ VITE_BUILD_DROP_CONSOLE = false
 > 只有以 VITE_ 为前缀的变量才会暴露给经过 vite 处理的代码
 
 ```json
-#下面三条命令，分别表示开发环境、测试环境、生产环境的运行和打包命令
+//下面三条命令，分别表示开发环境、测试环境、生产环境的运行和打包命令
 
 "dev:mp-weixin": "uni -p mp-weixin --mode development",
 "build:test": "uni build --mode test",
@@ -189,7 +189,7 @@ export default ({ command, mode }) => {
 ```
 
 
-# css-预处理器
+# Css预处理器
 
 ```sh
 // 1、 安装sass
@@ -224,11 +224,13 @@ vue文件使用
 # uni-ui
 > [uni-ui官方文档](https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html)         
 
-```json
-1、安装 uni-ui
+```sh
+//安装 uni-ui
 npm i @dcloudio/uni-ui   或   yarn add @dcloudio/uni-ui
+```
 
-2、配置easycom
+```json
+配置easycom
 使用 npm 安装好 uni-ui 之后，需要配置 easycom 规则，让 npm 安装的组件支持 easycom
 打开项目根目录下的 pages.json 并添加 easycom 节点
 
