@@ -26,6 +26,15 @@
   import myPainter from '@/components/painter';
   import popupShare from '@/components/popupShare/index';
   import { palette } from './components/image';
+  import VoteService from '@/api/VoteService';
+  import shareBg from '@img/shareBg.png';
+  import element1 from '@img/element1.png';
+  import element2 from '@img/element2.png';
+  import tagType1 from '@img/01.png';
+  import tagType2 from '@img/02.png';
+  import tagType3 from '@img/03.png';
+  import tagType4 from '@img/04.png';
+  import tagType5 from '@img/05.png';
 
   export default {
     name: 'userVoteResult',
@@ -67,25 +76,47 @@
       },
       async getInfoCanvass() {
         try {
-          const { resultData } = await this.$http.vote.getInfoCanvass(this.voteId);
+          const { resultData } = await VoteService.getInfoCanvass(this.voteId);
           this.shareInfo = resultData;
           let tagType = resultData.tagType;
           let url =
-            process.env.NODE_ENV === 'production'
+            import.meta.env.MODE === 'production'
               ? 'https://www.talk915.com'
               : 'https://test.talk915.com';
           this.template = palette({
-            url: require('@img/shareBg.png'),
+            url: shareBg,
             code: `${url}/h5/static/?voteId=${this.shareInfo.voteId}&recommendCode=${this.shareInfo.userDistributorCode}`,
-            avtar: require(`@img/0${tagType + 1}.png`),
-            icon1: require('@img/element1.png'),
-            icon2: require('@img/element2.png'),
+            avtar: this.getAvtar(tagType),
+            icon1: element1,
+            icon2: element2,
             text1: `我是 ${this.shareInfo.voteId}号 选手`,
             text2: this.shareInfo.userName,
           });
         } catch (e) {
           console.log(e, 'error');
         }
+      },
+      getAvtar(type) {
+        let img = null;
+        switch (type) {
+          case 0:
+            img = tagType1;
+            break;
+          case 1:
+            img = tagType2;
+            break;
+          case 2:
+            img = tagType3;
+            break;
+          case 3:
+            img = tagType4;
+            break;
+          case 4:
+            img = tagType5;
+            break;
+          default:
+        }
+        return img;
       },
       close() {
         this.$refs.share.close();

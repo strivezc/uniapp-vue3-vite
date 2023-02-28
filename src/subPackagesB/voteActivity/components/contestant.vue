@@ -38,6 +38,7 @@
 
 <script>
   import { getToken } from '@/utils/auth';
+  import VoteService from '@/api/VoteService';
 
   export default {
     name: 'contestant',
@@ -72,7 +73,7 @@
       async getUserVoteId() {
         if (getToken()) {
           try {
-            const { resultData } = await this.$http.vote.queryUserVoteId();
+            const { resultData } = await VoteService.queryUserVoteId();
             this.voteId = resultData.voteId ? resultData.voteId : '';
             this.voteNums = resultData.voteNums ? resultData.voteNums : '0';
           } catch (e) {
@@ -100,7 +101,7 @@
             ...this.formData,
             ...this.listQuery,
           };
-          const { resultData, totalCount } = await this.$http.vote.queryActivityContestants(params);
+          const { resultData, totalCount } = await VoteService.queryActivityContestants(params);
           if (this.listQuery.currPage === 1) {
             this.list = resultData;
           } else {
@@ -119,7 +120,7 @@
         this.getData();
       },
     },
-    destroyed() {
+    onUnload() {
       console.log('onUnload-refreshContestantData');
       uni.$off('refreshContestantData');
     },

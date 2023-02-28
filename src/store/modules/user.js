@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import UserService from '@/api/UserService';
-import { getToken, setToken, removeToken, clearStorageSync } from '@/utils/auth';
+import { getToken, setToken, clearStorageSync } from '@/utils/auth';
 
 export const useUserStore = defineStore('user', {
   state: () => {
@@ -50,7 +50,6 @@ export const useUserStore = defineStore('user', {
         UserService.logout(this.token)
           .then(() => {
             this.setToken('');
-            removeToken();
             clearStorageSync();
             this.$reset();
             resolve();
@@ -64,6 +63,7 @@ export const useUserStore = defineStore('user', {
     resetToken() {
       return new Promise((resolve) => {
         this.setToken('');
+        this.$reset();
         clearStorageSync();
         resolve();
       });

@@ -23,25 +23,31 @@
 </template>
 
 <script>
-  import { getUserName } from '@/utils/auth';
+  import VoteService from '@/api/VoteService';
+  import { mapState, mapActions } from 'pinia';
+  import { useUserStore } from '@/store';
+
   export default {
     name: 'activityEnter',
     data() {
       return {
-        userName: getUserName(),
         form: {
           contestImg: '',
           contestIntroduce: '说客英语',
         },
       };
     },
+    computed: {
+      ...mapState(useUserStore, ['userName']),
+    },
     onShow() {
       this.getInfo();
     },
     methods: {
+      ...mapActions(useUserStore, ['resetToken']),
       async getInfo() {
         try {
-          const { resultData } = await this.$http.vote.checkQualificationsGetInfo();
+          const { resultData } = await VoteService.checkQualificationsGetInfo();
           if (resultData === 1) {
             // 没有看年度报告
             uni.showModal({
@@ -84,8 +90,7 @@
               },
             });
           } else if (e.resultCode === -1) {
-            uni.$emit('refreshInfo');
-            this.$store.dispatch('user/resetToken').then(() => {
+            this.resetToken().then(() => {
               uni.showModal({
                 title: '提示',
                 content: '登录失效，请重新登录',
@@ -128,7 +133,7 @@
           return;
         }
         try {
-          const { resultData } = await this.$http.vote.signUpActivity(this.form);
+          const { resultData } = await VoteService.signUpActivity(this.form);
           uni.navigateTo({
             url: `/subPackagesB/voteActivity/enterResult?userName=${resultData.userName}&voteId=${resultData.voteId}`,
           });

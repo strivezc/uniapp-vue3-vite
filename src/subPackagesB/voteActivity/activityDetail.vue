@@ -81,6 +81,7 @@
 </template>
 
 <script>
+  import VoteService from '@/api/VoteService';
   import { formatSeconds } from '@/utils';
   import activityInfo from './components/activityInfo';
   import contestant from './components/contestant';
@@ -142,7 +143,7 @@
       },
       async getActivityDetail() {
         try {
-          const { resultData } = await this.$http.vote.queryActivityDetails();
+          const { resultData } = await VoteService.queryActivityDetails();
           this.activityDetail = resultData;
         } catch (e) {
           console.log(e, 'error');
@@ -150,7 +151,7 @@
       },
       async getActivityStatistics() {
         try {
-          const { resultData } = await this.$http.vote.queryActivityStatistics();
+          const { resultData } = await VoteService.queryActivityStatistics();
           this.activityStatistics = resultData;
           uni.setNavigationBarTitle({
             title: this.activityStatistics.voteName,

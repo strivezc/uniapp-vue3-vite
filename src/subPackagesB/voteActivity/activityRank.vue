@@ -68,6 +68,7 @@
 
 <script>
   import { getToken } from '@/utils/auth';
+  import VoteService from '@/api/VoteService';
 
   export default {
     name: 'activityRank',
@@ -127,7 +128,7 @@
             ...this.formData,
             ...this.listQuery,
           };
-          const { resultData, totalCount } = await this.$http.vote.queryActivityContestants(params);
+          const { resultData, totalCount } = await VoteService.queryActivityContestants(params);
           if (this.listQuery.currPage === 1) {
             this.list = resultData;
           } else {
